@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+Route::post('/search-hotel', 'SearchController@hotel');
+Route::post('/search-hotel-apartments', 'SearchController@hotelApartments');
+Route::get('/cpanel', 'SearchController@cpanel');
