@@ -19,7 +19,8 @@
         <meta name="twitter:image" content="" />
         <meta name="twitter:url" content="" />
         <meta name="twitter:card" content="" />
-    
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
+
         {{-- <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet"> --}}
         
         <!-- Animate.css -->

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
     protected $fillable = [
-        'name',"street_id","city_id","country_id",
+        'details',"street_id","city_id","country_id","hotel_Apartments_id","user_id","state"
     ];
     public function street()
     {
@@ -21,5 +21,9 @@ class Location extends Model
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+    public function hotelApartment()
+    {
+        return $this->belongsTo(HotelApartment::class,"hotel_Apartments_id");
     }
 }

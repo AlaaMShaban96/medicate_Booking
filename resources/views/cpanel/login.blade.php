@@ -14,8 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Login | Start Bootstrap</title>
 
-    <link href="assets/vendor/bootstrap4/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/auth.css" rel="stylesheet">
+    <link href="{{asset('cpanel/assets/vendor/bootstrap4/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('cpanel/assets/css/auth.css')}}" rel="stylesheet">
     
 </head>
 <body>
@@ -24,16 +24,17 @@
             <div class="card">
                 <div class="card-body text-center">
                     <div class="mb-4">
-                        <img class="brand" src="assets/img/bootstraper-logo.png" alt="bootstraper logo">
+                        <img class="brand" src="{{asset('cpanel/assets/img/bootstraper-logo.png')}}" alt="bootstraper logo">
                     </div>
-                    <h6 class="mb-4 text-muted">Sign in to your account</h6>
+       
                    
-                    <form action="" method="">
+                    <form action="{{url('/login')}}" method="get">
+                       
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email" required>
+                            <input type="email" name="email" class="form-control" placeholder="Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password" required>
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
                         </div>
                         <div class="form-group text-left">
                             <div class="custom-control custom-checkbox">
@@ -46,12 +47,19 @@
                     <p class="mb-2 text-muted">Forgot password? <a href="forgot-password.html">Reset</a></p>
                     <p class="mb-0 text-muted">Don’t have an account? <a href="signup.html">Signup</a></p>
                 </div>
+                @if ($errors->any())
+                <div class="btn-block  btn btn-lg btn-danger" style="disply:non;">
+                    @foreach ($errors->all() as $error)
+                        <div>{{$error}}</div>
+                    @endforeach
+                </div>
+                @endif
             </div>
         </div>
     </div>
     
-    <script src="assets/vendor/jquery3/jquery-3.4.1.min.js"></script>
-    <script src="assets/vendor/bootstrap4/js/bootstrap.min.js"></script>
+    <script src="{{asset('cpanel/assets/vendor/jquery3/jquery-3.4.1.min.js')}}"></script>
+    <script src="{{asset('cpanel/assets/vendor/bootstrap4/js/bootstrap.min.js')}}"></script>
 
 </body>
 </html>

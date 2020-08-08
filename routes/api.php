@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/city-all/{country}','Api\SearchController@Cityall');
+Route::get('/street-all/{city}','Api\SearchController@Streetall');
+Route::get('/get','Api\SearchController@get');

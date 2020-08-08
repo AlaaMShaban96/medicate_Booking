@@ -1,6 +1,6 @@
 @extends('layouts.master')
 		
-	
+
 @section('content')
 	<div class="colorlib-loader"></div>
 
@@ -74,8 +74,8 @@
 							</form>
 						</div>
 						<div id="hotel" class="tab-pane fade">
-							<form action="{{url('/search-hotel')}}"  method="post" class="colorlib-form">
-								@csrf
+							<form action="{{url('/search-hotel')}}"  method="get" class="colorlib-form">
+								
 								<div class="row">
 								<div class="col-md-2">
 									<div class="booknow">
@@ -123,8 +123,8 @@
 							</form>
 						</div>
 						<div id="hotel_Apartments" class="tab-pane fade">
-							<form action="{{url('/search-hotel-apartments')}}"  method="post" class="colorlib-form">
-								@csrf
+							<form action="{{url('/search-hotel-apartments')}}"  method="get" class="colorlib-form">
+								
 								<div class="row">
 									<div class="col-md-2">
 										<div class="booknow">
@@ -135,31 +135,53 @@
 									</div>
 									<div class="col-md-2">
 										<div class="form-group">
-											<label for="date">Where:</label>
+											<label for="date">Where: Country </label>
 											<div class="form-field">
-												<input type="text" id="location" class="form-control" placeholder="Search Location">
+												<div class="form-field">
+													<i class="icon icon-arrow-down3"></i>
+													<select name="country_id" id="Country" class="form-control">
+														<option value="">select</option>
+														@foreach ($countries as $country)
+															<option value="{{$country->id}}">{{$country->name}}</option>
+														@endforeach
+														
+													</select>
+												</div>	
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="date">Where: City  </label>
+											<div class="form-field">
+												<div class="form-field">
+													<i class="icon icon-arrow-down3"></i>
+													<select name="city_id" id="City" class="form-control">
+														
+													</select>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-2">
+										<div class="form-group">
+											<label for="date">Where:  Street   </label>
+											<div class="form-field">
+												<div class="form-field">
+													<i class="icon icon-arrow-down3"></i>
+													<select name="street_id" id="Street" class="form-control">
+														
+										
+													</select>
+												</div>
 											</div>
 										</div>
 									</div>
 									
-									<div class="col-md-2">
-										<div class="form-group">
-											<label for="date">Check-in:</label>
-											<div class="form-field">
-												<i class="icon icon-calendar2"></i>
-												<input type="text" id="date" class="form-control date" placeholder="Check-in date">
-											</div>
-										</div>
-									</div>
-									<div class="col-md-2">
-									<div class="form-group">
-										<label for="date">Check-out:</label>
-										<div class="form-field">
-											<i class="icon icon-calendar2"></i>
-											<input type="text" id="date" class="form-control date" placeholder="Check-out date">
-										</div>
-									</div>
-									</div>
+									
+									
 									<div class="col-md-2">
 										<div class="form-group">
 											<label for="guests">Guest</label>
@@ -373,7 +395,11 @@
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
 @endsection	
-		
+@section('script')
+	
+<script src="{{asset('js/page/index.js')}}"></script>
+
+@endsection
 
 		
 

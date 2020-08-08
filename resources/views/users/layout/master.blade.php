@@ -1,25 +1,16 @@
-<!doctype html>
-<!-- 
-* Bootstrap Simple Admin Template
-* Email: heyalexluna@gmail.com
-* Version: 1.1
-* Author: Alexis Luna
-* Copyright 2019 Alexis Luna
-* Website: https://github.com/mralexisluna/bootstrap-simple-admin-template
--->
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dashboard | Start Bootstrap</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
 
-    <link href="{{asset("cpanel/assets/vendor/bootstrap4/css/bootstrap.min.css")}}" rel="stylesheet">
-    <link href="{{asset("cpanel/assets/css/master.css")}}" rel="stylesheet">
-    <link href="{{asset("cpanel/assets/vendor/chartsjs/Chart.min.css")}}" rel="stylesheet">
-    <link href="{{asset("cpanel/assets/vendor/flagiconcss3/css/flag-icon.min.css")}}" rel="stylesheet">
+    @include('users.layout.navbar')
+    
+    @yield('head')
 </head>
-
 <body>
     <div class="wrapper">
         <nav id="sidebar" class="active">
@@ -47,7 +38,7 @@
                 </li>
             </ul>
         </nav>
-
+    
         <div id="body" class="active">
             <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
                 <button type="button" id="sidebarCollapse" class="btn btn-outline-light default-light-menu"><i class="fas fa-bars"></i><span></span></button>
@@ -86,3 +77,14 @@
                     </ul>
                 </div>
             </nav>
+       
+    
+    
+@yield('content')
+
+@yield('script')
+
+    @include('users.layout.footer')
+</body>
+</html>
+
