@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Cpanel;
 
+use App\User;
 use App\Photo;
 use App\Country;
 use App\Location;
@@ -10,8 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
-
-
+use App\Http\Controllers\Controller;
 
 class LocationController extends Controller
 {
@@ -22,9 +22,7 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $locations = Location::where("user_id",auth()->user()->id)->get();
-       
-        return view('users.index',compact('locations'));
+        //
     }
 
     /**
@@ -34,8 +32,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        $countries=Country::all();
-        return view('users.add',compact('countries'));
+        //
     }
 
     /**
@@ -46,48 +43,8 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
- 
-            'image' => 'required',
-            'name' => 'required',
-            'country_id' => 'required',
-            'city_id' => 'required',
-            'street_id' => 'required',
-            'details' => 'required',
-            'price' => 'required',
-         
-        ]);
-        
-        HotelApartment::create([
-            'name'=>$request->name,
-            'img_path'=>$this->uploadeImage( $request,0,"image")
-        ]);
-
-        $hotelApartment=HotelApartment::orderBy('id','desc')->first();
-
-        if ($request->has('image_upload')) {
-            
-            foreach ($request->image_upload as $key => $value) {
-
-                Photo::create([
-                    'hotel_Apartment_id' => $hotelApartment->id,
-                    'img_path'=>$this->uploadeImage( $request,$key ,"images")
-                ]);
-            }
-        }
-        Location::create([
-            'country_id' => $request->country_id,
-            'city_id' => $request->city_id,
-            'street_id' => $request->street_id,
-            'details' => $request->details,
-            'price' => $request->price,
-            'user_id' => auth()->user()->id,
-            'hotel_Apartments_id' => $hotelApartment->id,
-        ]);
-        
-        Session::flash('message', 'تم التعديل بنجاج ');
-        return redirect()->back();
-    } 
+        //
+    }
 
     /**
      * Display the specified resource.
@@ -95,9 +52,9 @@ class LocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('cpanel.users.locations.index',compact('user') );
     }
 
     /**
@@ -109,7 +66,7 @@ class LocationController extends Controller
     public function edit(Location $location)
     {
         $countries=Country::all();
-        return view('users.edit',compact('countries','location'));
+        return view('cpanel.users.locations.edit',compact('countries','location'));
     }
 
     /**
@@ -133,8 +90,8 @@ class LocationController extends Controller
 
             $location->hotelApartment->name = $request->name;
          
-            if (empty( $request->except('image_upload') )) {
-         
+            if (!empty( $request->except('image_upload') )) {
+       
                 foreach ($request->image_upload as $key => $value) {
                  
                     
@@ -163,8 +120,8 @@ class LocationController extends Controller
 
             $location->update();
         
-            Session::flash('update', 'تم إرسال طلبك بنجاح');
-            return redirect('/location/index');
+            Session::flash('update', 'تم التعديل  بنجاح');
+            return redirect("/cpanel/user/". $location->user->id ."/location");
 
     }
 
@@ -174,24 +131,9 @@ class LocationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Location $location)
+    public function destroy($id)
     {
-        
-        unlink($location->hotelApartment->img_path);
-
-        $location->hotelApartment->delete();
-
-
-        $location->delete();
-
-        return redirect()->back();
-    }
-    public function destroyPhoto(Photo $photo)
-    {
-        unlink($photo->img_path);
-        $photo->delete();
-      
-        return redirect()->back();
+        //
     }
     private function uploadeImage(Request $request, $key,$type)
     {

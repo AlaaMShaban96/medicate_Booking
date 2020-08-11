@@ -17,7 +17,7 @@ $('#Country').on('change', function() {
     success:function(data) { 
         // console.log(data);
         $("#City") .empty();
-        $("#City").append('<option value=""> select </option>');
+        $("#City").append('<option value=""> Where: City </option>');
         data.forEach(element => {
             
             $("#City").append('<option value="'+element.id+'">'+element.name+'</option>');
@@ -41,7 +41,7 @@ $('#City').on('change', function() {
     success:function(data) { 
         // console.log(data);
         $("#Street") .empty();
-        $("#Street") .append('<option value=""> select </option>');
+        $("#Street") .append('<option value="">Where:  Street  </option>');
         data.forEach(element => {
             
             $("#Street").append('<option value="'+element.id+'">'+element.name+'</option>');

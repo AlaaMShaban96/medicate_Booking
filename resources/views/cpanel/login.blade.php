@@ -28,8 +28,8 @@
                     </div>
        
                    
-                    <form action="{{url('/login')}}" method="get">
-                       
+                    <form action="{{url('/login')}}" method="post">
+                       @csrf
                         <div class="form-group">
                             <input type="email" name="email" class="form-control" placeholder="Email" required>
                         </div>

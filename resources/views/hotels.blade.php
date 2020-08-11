@@ -24,7 +24,7 @@
 		</aside>
 		
 
-		<div class="colorlib-wrap">
+		<div class="x colorlib-wrap ">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-9">
@@ -35,7 +35,7 @@
 							
 									<div class="col-md-6 col-sm-6 animate-box">
 										<div class="hotel-entry">
-											<a href="hotel-room.html" class="hotel-img" style="background-image: url(images/hotel-1.jpg);">
+											<a href="{{url('/hotel-room/'.$location->id)}}" class="hotel-img" style="background-image: url({{asset($location->hotelApartment->img_path )}});">
 												<p class="price"><span>$120</span><small> /night</small></p>
 											</a>
 											<div class="desc">
@@ -234,11 +234,25 @@
 				</div>
 			</div>
 		</div>
+		<input type="hidden" class="class" value="{{$class}}">
 @endsection	
 @section('script')
 	
 	<script src="{{asset('js/page/index.js')}}"></script>
-
+<script>
+	$(function() {
+	
+	var index=	$('.class').val();
+	console.log(index);
+		var target = $('.'+index);
+		if (target.length) {
+			$('html,body').animate({
+				scrollTop: target.offset().top
+			}, 1000);
+			return false;
+		}
+	});
+</script>
 @endsection
 		
 				

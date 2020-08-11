@@ -1,15 +1,12 @@
-@extends('users.layout.master')
+@include('cpanel.layout.navbar') 
 
-@section('head')
     <style>
         .col-md-6 {
   
             max-width: 32%;
         }
     </style>
-@endsection
 
-@section('content')
     
 <div class="colorlib-wrap">
     @if (Session::has('update'))
@@ -17,13 +14,13 @@
     @endif
     <div class="container">
     	<div class="row">
-            <div class="col-md-6 col-sm-6 animate-box">
+            {{-- <div class="col-md-6 col-sm-6 animate-box">
                 <a href="{{url('/location/create')}}">
                 
                     <img  style="width: 84%;" src="{{asset('users/img/addloction.jpg')}}" alt="" srcset="">
                 </a>
-            </div> 
-             @foreach ($locations as $location)
+            </div>  --}}
+             @foreach ($user->locations as $location)
                     
             
                     <div class="col-md-6 col-sm-6 animate-box">
@@ -34,7 +31,7 @@
                                 <p class="price"><span>${{$location->price}}</span><small> /night</small></p>
                             </a>
                             <div class="desc">
-                                 <a href="{{url('/location/'.$location->id.'/edit')}}"  >
+                                 <a href="{{url("/cpanel/location/$location->id/edit")}}"  >
                                     
                                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                     width="24" height="24"viewBox="0 0 172 172"
@@ -94,8 +91,8 @@
     </div>
 </div>
 
-@endsection
-@section('script')
+
+
     <script>
        
         function deletee(id) {
@@ -103,4 +100,5 @@
             document.getElementById("delete"+id).submit();
         }
     </script>
-@endsection 
+
+@include('cpanel.layout.footer') 

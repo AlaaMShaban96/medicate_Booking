@@ -13,11 +13,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Dashboard | Start Bootstrap</title>
-
+    <link href="{{asset("cpanel/assets/vendor/bootstrap4/css/bootstrap.min.css")}}" rel="stylesheet">
+    <link href="{{asset("cpanel/assets/vendor/DataTables/datatables.min.css")}}" rel="stylesheet">
+    <link href="{{asset("cpanel/assets/css/master.css")}}" rel="stylesheet">
     <link href="{{asset("cpanel/assets/vendor/bootstrap4/css/bootstrap.min.css")}}" rel="stylesheet">
     <link href="{{asset("cpanel/assets/css/master.css")}}" rel="stylesheet">
     <link href="{{asset("cpanel/assets/vendor/chartsjs/Chart.min.css")}}" rel="stylesheet">
     <link href="{{asset("cpanel/assets/vendor/flagiconcss3/css/flag-icon.min.css")}}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{asset("css/magnific-popup.css")}}">
+
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="{{asset("css/flexslider.css")}}">
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="{{asset("css/owl.carousel.min.css")}}">
+    <link rel="stylesheet" href="{{asset("css/owl.theme.default.min.css")}}">
+    
+
+  <link rel="stylesheet" href="{{asset("css/style.css")}}">
 </head>
 
 <body>
@@ -41,6 +55,9 @@
                 </li>
                 <li>
                     <a href="{{url('/cpanel/streets')}}"><i class="fas fa-user-friends"></i>Streets</a>
+                </li>
+                <li>
+                    <a href="{{url('/cpanel/users')}}"><i class="fas fa-user-friends"></i>User</a>
                 </li>
                 <li>
                     <a href="settings.html"><i class="fas fa-cog"></i>Settings</a>

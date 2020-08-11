@@ -6,6 +6,13 @@
 <script src="{{asset('cpanel/assets/vendor/chartsjs/Chart.min.js')}}"></script>
 <script src="{{asset('cpanel/assets/js/dashboard-charts.js')}}"></script>
 <script src="{{asset('cpanel/assets/js/script.js')}}"></script>
+<script src="{{asset('cpanel/assets/vendor/DataTables/datatables.min.js')}}"></script>
+<script src="{{asset('cpanel/assets/js/initiate-datatables.js')}}"></script>
+
+        <!-- jQuery -->
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<!-- jQuery Easing -->
+<script src="{{asset('js/jquery.easing.1.3.js')}}"></script>
 
 </body>
 

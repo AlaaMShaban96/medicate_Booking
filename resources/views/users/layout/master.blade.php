@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     @include('users.layout.navbar')
     
@@ -19,19 +19,19 @@
             </div>
             <ul class="list-unstyled components">
                 <li>
-                    <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+                    <a href="{{url('/location/index')}}"><i class="fas fa-home"></i> Dashboard</a>
                 </li>
                
               
                
                 <li>
-                    <a href="{{url('/cpanel/countries')}}"><i class="fas fa-user-friends"></i>Countries</a>
+                    <a href=""><i class="fas fa-user-friends"></i>Countries</a>
                 </li>
                 <li>
-                    <a href="{{url('/cpanel/cities')}}"><i class="fas fa-user-friends"></i>Cities</a>
+                    <a href=""><i class="fas fa-user-friends"></i>Cities</a>
                 </li>
                 <li>
-                    <a href="{{url('/cpanel/streets')}}"><i class="fas fa-user-friends"></i>Streets</a>
+                    <a href=""><i class="fas fa-user-friends"></i>Streets</a>
                 </li>
                 <li>
                     <a href="settings.html"><i class="fas fa-cog"></i>Settings</a>
@@ -46,7 +46,7 @@
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item dropdown">
                             <div class="nav-dropdown">
-                                <a href="" class="nav-item nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-link"></i> <span>Quick Links</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i></a>
+                                {{-- <a href="" class="nav-item nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-link"></i> <span>Quick Links</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i></a> --}}
                                 <div class="dropdown-menu dropdown-menu-right nav-link-menu">
                                     <ul class="nav-list">
                                         <li><a href="" class="dropdown-item"><i class="fas fa-list"></i> Access Logs</a></li>
@@ -62,14 +62,14 @@
                         </li>
                         <li class="nav-item dropdown">
                             <div class="nav-dropdown">
-                                <a href="" class="nav-item nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user"></i> <span>John Doe</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i></a>
+                                <a href="" class="nav-item nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user"></i> <span>{{auth()->user()->name}}</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right nav-link-menu">
                                     <ul class="nav-list">
-                                        <li><a href="" class="dropdown-item"><i class="fas fa-address-card"></i> Profile</a></li>
-                                        <li><a href="" class="dropdown-item"><i class="fas fa-envelope"></i> Messages</a></li>
+                                        {{-- <li><a href="" class="dropdown-item"><i class="fas fa-address-card"></i> Profile</a></li> --}}
+                                        {{-- <li><a href="" class="dropdown-item"><i class="fas fa-envelope"></i> Messages</a></li> --}}
                                         <li><a href="" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a></li>
                                         <div class="dropdown-divider"></div>
-                                        <li><a href="" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                                        <li><a href="{{url('/logout')}}" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -82,9 +82,12 @@
     
 @yield('content')
 
+    @include('users.layout.footer')
+    
 @yield('script')
 
-    @include('users.layout.footer')
+
+    
 </body>
 </html>
 

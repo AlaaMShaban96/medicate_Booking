@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Country;
 use App\Location;
 
-
-
 use App\HotelApartment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,9 +23,13 @@ class SearchController extends Controller
                     ->where("city_id",$request->city_id)
                     ->where("street_id",$request->street_id)
                     ->paginate(8);
-
+                    $class="x";
                 //   dd($locations);
-        return view('hotels',compact('locations','countries'));
+        return view('hotels',compact('locations','countries',"class"));
+    }
+    public function hotelRoom(Location $location)
+    {
+        return view('hotel-room',compact('location'));
     }
     public function cpanel()
     {

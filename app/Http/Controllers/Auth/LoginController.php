@@ -57,9 +57,7 @@ class LoginController extends Controller
 
         }
         
-        $locations = Location::where("user_id",auth()->user()->id)->get();
-       
-        return view('users.index',compact('locations'));
+       return redirect('/location/index');
         
     }
     public function logout(Request $request)
